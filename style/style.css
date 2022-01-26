@@ -1,0 +1,65 @@
+*, *::before, *::after {
+		box-sizing: border-box;
+}
+
+body {
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100vw;
+		height: 100vh;
+		background: linear-gradient(135deg, #fff 30%, #d5dfff) no-repeat;
+		bac
+}
+
+form {
+		display: flex;
+		flex-direction: column;
+}
+
+h1 {
+		margin-inline: auto;
+}
+
+div {
+		position: relative;
+}
+
+textarea {
+		width: 100%;
+		outline: none;
+		border: none;
+		border-radius: 2%;
+		padding: 1em;
+		transition: 0.3s ease-in-out all;
+		-webkit-transition: 0.3s ease-in-out all;
+		-moz-transition: 0.3s ease-in-out all;
+}
+
+label {
+  font-family:arial;
+  font-size:16px;
+  color: #afbdcf;
+  padding: 14px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition:0.2s ease-in-out all; 
+  -moz-transition:0.2s ease-in-out all; 
+  -webkit-transition:0.2s ease-in-out all;
+  pointer-events: none;
+}
+
+textarea:focus + label {
+  font-size: 14px;
+  color: #6aa2ff;
+  top: -8px;
+  left: 10px;
+  background: #fff;
+  padding: 0px 5px 0px 5px;
+}
+
+textarea:focus {
+		border: 2px solid #6aa2ff;
+}
