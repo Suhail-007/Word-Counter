@@ -12,10 +12,10 @@ class WordCounter {
 		}
 		
 		getWordStatus(str) {
-				let matches = str;				
+				let matches = str.match(/\S+/g);
 				return {
 						characters: str.replace(/\s+/g, '').length,
-						words: matches ? matches.split(' ').length : 0,
+						words: matches ? matches.length : 0,
 				};
 	}
 		
