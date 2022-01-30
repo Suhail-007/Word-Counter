@@ -16,9 +16,9 @@ body {
 form {
 		display: flex;
 		flex-direction: column;
-		border: 2px solid red;
-
+		width: 80%;
 		max-width: 500px;
+		font-size: 3vw;
 }
 
 h1 {
@@ -55,6 +55,11 @@ label {
   pointer-events: none;
 }
 
+button {
+		font-size: 1em;
+		margin: 1em 0;
+}
+
 .focus {
 	 font-size: 1em;
   color: #6aa2ff;
@@ -69,6 +74,10 @@ textarea:focus {
 }
 
 @media screen and (min-width: 1024px){
+		form {
+		font-size: 1.5vh;
+}
+			
 		div {
 				font-size: 1.5vh;
 		}
