@@ -50,3 +50,17 @@ textarea.addEventListener('count', () => {
 		 let txtDiv = document.querySelector('[data-txtDiv]');
 			txtDiv.appendChild(resetBtn);
 })
+
+let placeholderLabel = document.querySelector('[data-placeholderLabel]');
+
+
+textarea.addEventListener('focus', () => {
+		placeholderLabel.classList.add('focus');
+})
+
+
+textarea.addEventListener('blur', () => {
+		if (textarea.value == '') {
+		placeholderLabel.classList.remove('focus');
+ }
+})
