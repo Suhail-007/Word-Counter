@@ -17,7 +17,7 @@ form {
 		display: flex;
 		flex-direction: column;
 		border: 2px solid red;
-		width: 80%;
+
 		max-width: 500px;
 }
 
