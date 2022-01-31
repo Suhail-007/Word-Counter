@@ -56,11 +56,11 @@ let placeholderLabel = document.querySelector('[data-placeholderLabel]');
 
 textarea.addEventListener('focus', () => {
 		placeholderLabel.classList.add('focus');
-})
+}, true)
 
 
 textarea.addEventListener('blur', () => {
 		if (textarea.value == '') {
 		placeholderLabel.classList.remove('focus');
  }
-})
+}, true)
