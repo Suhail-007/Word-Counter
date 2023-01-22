@@ -1,66 +1,65 @@
+const textarea = document.querySelector('textarea');
+const output = document.querySelector('[data-output]');
+const resetBtn = document.querySelector('[data-reset]');
+
 class WordCounter {
-		constructor(inputText) {
-				this.inputText = inputText;
-				this.inputText.addEventListener('input', () => {
-						this.count();
-				});
-		}
-		
-		count() {
-				let wordStat = this.getWordStatus(this.inputText.value.trim());
-				this.emitEvent(wordStat);
-		}
-		
-		getWordStatus(str) {
-				let matches = str.match(/\S+/g);
-				return {
-						characters: str.replace(/\s+/g, '').length,
-						words: matches ? matches.length : 0,
-				};
-	}
-		
-	emitEvent(wordStat) {
-				let customEvent = new CustomEvent('count', {
-						bubbles: true,
-						cancelable: true,
-						detail: {
-								wordStat
-						}
-				});
-				this.inputText.dispatchEvent(customEvent);
-		}
+  constructor(inputText) {
+    this.inputText = inputText;
+    this.inputText.addEventListener('input', () => {
+      this.count();
+    });
+  }
+
+  count() {
+    const wordStat = this.getWordStatus(this.inputText.value.trim());
+    this.emitEvent(wordStat);
+  }
+
+  getWordStatus(str) {
+    const matches = str.match(/\S+/g);
+    return {
+      characters: str.replace(/\s+/g, '').length,
+      words: matches ? matches.length : 0,
+    };
+  }
+
+  emitEvent(wordStat) {
+    const customEvent = new CustomEvent('count', {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        wordStat
+      }
+    });
+    this.inputText.dispatchEvent(customEvent);
+  }
 }
 
-let textarea = document.querySelector('textarea');
-let output = document.querySelector('[data-output]');
-
-let textArea = new WordCounter(textarea);
-
- //to clear textarea
-let resetBtn = document.createElement('button');
+const wordCounter = new WordCounter(textarea);
 
 textarea.addEventListener('count', () => {
-		output.innerHTML = `You've written <span style="font-weight:bold">${event.detail.wordStat.words} words </span> and <span style="font-weight:bold"> ${event.detail.wordStat.characters} characters</span>`;
-		
-		//reset Button
-		resetBtn.innerHTML = 'Reset';
-		resetBtn.addEventListener('click', () => {
-				textarea.value = '';
-		});
-		 let txtDiv = document.querySelector('[data-txtDiv]');
-			txtDiv.appendChild(resetBtn);
+  output.innerHTML = `You've written <span style="font-weight:bold">${event.detail.wordStat.words} words </span> and <span style="font-weight:bold"> ${event.detail.wordStat.characters} characters</span>`;
+
+  resetBtn.classList.add('active');
 })
 
-let placeholderLabel = document.querySelector('[data-placeholderLabel]');
-
+const placeholderLabel = document.querySelector('[data-placeholderLabel]');
 
 textarea.addEventListener('focus', () => {
-		placeholderLabel.classList.add('focus');
-}, true)
-
+  placeholderLabel.classList.add('focus');
+})
 
 textarea.addEventListener('blur', () => {
-		if (textarea.value == '') {
-		placeholderLabel.classList.remove('focus');
- }
-}, true)
+  if (textarea.value == '') {
+    placeholderLabel.classList.remove('focus');
+  }
+});
+
+// reset Button
+resetBtn.addEventListener('click', () => {
+  textarea.value = '';
+  output.innerHTML = 'You have 0 words and 0 characters';
+  placeholderLabel.classList.remove('focus');
+  resetBtn.classList.remove('active');
+  
+});
